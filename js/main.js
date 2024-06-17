@@ -6,27 +6,17 @@ let conteggio;
 //gestisco il click per iniziare il gioco
 const start = document.getElementById("start");
 start.addEventListener("click",
-    function (){
-        
+    function(){
         start.classList.add("none")
         secondi.classList.remove("none");
         let numeri = sequenzaNumeriRandom(1, 100, 10);
-         console.log(numeri);
+        console.log(numeri);
 
          //   Visualizzare in pagina 5 numeri casuali. 
-         visualizza.innerText ="questi sono i numeri : "+ numeri ;   
-
-    },startTimer(10)
-    
-
-    
-    
-)
-
-
-
-
-// Da lì parte un timer di 30 secondi.
+        visualizza.innerText ="questi sono i numeri : "+ numeri ;  
+    }
+  ,startTimer(10),
+);
 
 
 // Dopo 30 secondi i numeri scompaiono e l’utente deve inserire, uno alla volta, i numeri che ha visto precedentemente, tramite il prompt().
@@ -62,14 +52,20 @@ function numRandom(min, max) {
 
 //funzione timer
 function startTimer (nSec){
-    let secondi = nSec;
+    let sec = nSec;
     conteggio = setInterval(
             function(){
-                secondi--;
-                timer.innerText = secondi;
-                if(secondi===0){
+                sec--;
+                timer.innerText = sec;
+                if(sec===0){
                     clearInterval(conteggio)
+                    secondi.classList.add("none");
+                    visualizza.classList.add("none");
+                    
+
                 }
             }, 1000);
     
 }
+
+
