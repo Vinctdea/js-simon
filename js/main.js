@@ -1,19 +1,26 @@
-let secondi = document.getElementById("secondi");
+const secondi = document.getElementById("secondi");
+const timer = document.getElementById("timer");
+const visualizza = document.getElementById("visualizza");
+let conteggio;
 
 //gestisco il click per iniziare il gioco
 const start = document.getElementById("start");
 start.addEventListener("click",
-    function(){
+    function (){
+        
         start.classList.add("none")
         secondi.classList.remove("none");
         let numeri = sequenzaNumeriRandom(1, 100, 10);
-        console.log(numeri);
-        // Visualizzare in pagina 5 numeri casuali.
-        let visualizza = document.getElementById("visualizza");
-        visualizza.innerText ="questi sono i numeri : "+ numeri ;
+         console.log(numeri);
 
-    }
+         //   Visualizzare in pagina 5 numeri casuali. 
+         visualizza.innerText ="questi sono i numeri : "+ numeri ;   
 
+    },startTimer(10)
+    
+
+    
+    
 )
 
 
@@ -51,4 +58,18 @@ function sequenzaNumeriRandom(min, max, quantita){
 // funzione genera numero ramndom
 function numRandom(min, max) {
     return parseInt(Math.floor(Math.random() * (1 + max - min)) + min);
+}
+
+//funzione timer
+function startTimer (nSec){
+    let secondi = nSec;
+    conteggio = setInterval(
+            function(){
+                secondi--;
+                timer.innerText = secondi;
+                if(secondi===0){
+                    clearInterval(conteggio)
+                }
+            }, 1000);
+    
 }
