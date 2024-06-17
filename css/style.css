@@ -26,13 +26,16 @@
 }
 
  #start , #invia_num{
-    margin-top: 50px;
+    margin: 50px auto;
     background-color: black;
     color: white;
     padding: 10px;
     border-radius: 7px;
     font-size: 30px;
     cursor: pointer;
+    border-radius: 7px;
+    width: fit-content;
+    height: fit-content;
  }
 
  .none{

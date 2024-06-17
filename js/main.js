@@ -15,7 +15,7 @@ start.addEventListener("click",
     function(){
         start.classList.add("none")
         secondi.classList.remove("none");
-        let numeri = sequenzaNumeriRandom(1, 100, 10);
+        let numeri = sequenzaNumeriRandom(1, 100, 5);
         console.log(numeri);
 
          //   Visualizzare in pagina 5 numeri casuali. 
@@ -70,14 +70,39 @@ function startTimer (nSec){
                     inputUser.classList.remove("none");
                     inviaNum.classList.remove("none");
 
+                    let contoClick=0
                     // gestisco click per inviare dati
                     inviaNum.addEventListener("click",
-                        function(){
-                            
+                        function(){//al click inserisco i dati nell'array 
+                           
+                            contoClick++;
+                            if(contoClick===0){
+                                inputUser.setAttribute("placeholder",  "inserisci il primo numero")
+                            }else if(contoClick===1){
+                                inputUser.setAttribute("placeholder"," inserisci il secondo numero")
+                            }else if(contoClick===2){
+                                inputUser.setAttribute("placeholder", "inserisci il terzo numero")
+
+                            }else if(contoClick===3){
+                                inputUser.setAttribute("placeholder", "inserisci il quarto numero")
+                            }else if(contoClick===4){
+                                inputUser.setAttribute("placeholder", "inserisci il quinto numero")
+
+                            }
+
+                            let valoreInput=inputUser.value;
+                            arrayInput.push(valoreInput);
+                            inputUser.value= "";
+                            if (arrayInput.length===5){
+                                inputUser.classList.add("none");
+                                inviaNum.classList.add("none");
+                                console.log(arrayInput);
+                                console.log(contoClick);
+                            }                              
+      
                         }
 
                     )
-
 
                 }
             }, 1000);
