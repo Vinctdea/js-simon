@@ -1,3 +1,5 @@
+
+//definisco le variabili globali
 const secondi = document.getElementById("secondi");
 const timer = document.getElementById("timer");
 const visualizza = document.getElementById("visualizza");
@@ -6,8 +8,8 @@ const arrayInput = [];
 const inputUser = document.getElementById("input");
 const form =  document.querySelector("form");
 const inviaNum = document.getElementById("invia_num");
-
-
+const output = document.getElementById("output");
+let numeri;
 
 //gestisco il click per iniziare il gioco
 const start = document.getElementById("start");
@@ -15,7 +17,7 @@ start.addEventListener("click",
     function(){
         start.classList.add("none")
         secondi.classList.remove("none");
-        let numeri = sequenzaNumeriRandom(1, 100, 5);
+        numeri = sequenzaNumeriRandom(1, 100, 5);
         console.log(numeri);
 
          //   Visualizzare in pagina 5 numeri casuali. 
@@ -23,15 +25,6 @@ start.addEventListener("click",
     }
   ,startTimer(5),
 );
-
-
-// Dopo 30 secondi i numeri scompaiono e l’utente deve inserire, uno alla volta, i numeri che ha visto precedentemente, tramite il prompt().
-// Dopo che sono stati inseriti i 5 numeri, il software dice quanti e quali dei numeri da indovinare sono stati individuati.
-
-
-
-
-
 
 ///////////FUNZIONI//////////
 
@@ -64,42 +57,67 @@ function startTimer (nSec){
                 sec--;
                 timer.innerText = sec;
                 if(sec===0){
-                    clearInterval(conteggio)
+                    clearInterval(conteggio);
                     secondi.classList.add("none");
                     visualizza.classList.add("none");
                     inputUser.classList.remove("none");
                     inviaNum.classList.remove("none");
 
-                    let contoClick=0
+                    let contoClick = 0;
+                    
                     // gestisco click per inviare dati
                     inviaNum.addEventListener("click",
                         function(){//al click inserisco i dati nell'array 
-                           
+                            
+                           //setto il placeholder in base al n di click
                             contoClick++;
                             if(contoClick===0){
-                                inputUser.setAttribute("placeholder",  "inserisci il primo numero")
+                                inputUser.setAttribute("placeholder","inserisci il primo numero")
                             }else if(contoClick===1){
-                                inputUser.setAttribute("placeholder"," inserisci il secondo numero")
+                                inputUser.setAttribute("placeholder","inserisci il secondo numero")
                             }else if(contoClick===2){
-                                inputUser.setAttribute("placeholder", "inserisci il terzo numero")
+                                inputUser.setAttribute("placeholder","inserisci il terzo numero")
 
                             }else if(contoClick===3){
-                                inputUser.setAttribute("placeholder", "inserisci il quarto numero")
+                                inputUser.setAttribute("placeholder","inserisci il quarto numero")
                             }else if(contoClick===4){
-                                inputUser.setAttribute("placeholder", "inserisci il quinto numero")
+                                inputUser.setAttribute("placeholder","inserisci il quinto numero")
 
                             }
 
-                            let valoreInput=inputUser.value;
+                            //inserisco il valore nell'array
+                            let valoreInput = parseInt(inputUser.value);
                             arrayInput.push(valoreInput);
-                            inputUser.value= "";
+                            
+                                                    
+                            
+                            
                             if (arrayInput.length===5){
                                 inputUser.classList.add("none");
                                 inviaNum.classList.add("none");
                                 console.log(arrayInput);
                                 console.log(contoClick);
-                            }                              
-      
+                                //stampo l'output
+                                output.classList.remove("none");
+
+                                // confronto array
+                                for (let index = 0; index < arrayInput.length; index++) {
+                                    const element = arrayInput[index];
+                                    console.log(element); 
+                                    if(numeri.includes(element)){
+                                        output.innerHTML = `<h2> complimenti hai trovato ${index} numeri </h2>`
+                                    } else{
+                                         output.innerHTML = `<h2> non hai trovato  numeri </h2>`
+                                    } 
+                                }
+                                
+                                     
+
+                            } 
+
+                            
+
+                                  
                         }
 
                     )
@@ -108,5 +126,8 @@ function startTimer (nSec){
             }, 1000);
     
 }
+
+
+
 
 
