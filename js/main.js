@@ -2,6 +2,12 @@ const secondi = document.getElementById("secondi");
 const timer = document.getElementById("timer");
 const visualizza = document.getElementById("visualizza");
 let conteggio;
+const arrayInput = [];
+const inputUser = document.getElementById("input");
+const form =  document.querySelector("form");
+const inviaNum = document.getElementById("invia_num");
+
+
 
 //gestisco il click per iniziare il gioco
 const start = document.getElementById("start");
@@ -15,7 +21,7 @@ start.addEventListener("click",
          //   Visualizzare in pagina 5 numeri casuali. 
         visualizza.innerText ="questi sono i numeri : "+ numeri ;  
     }
-  ,startTimer(10),
+  ,startTimer(5),
 );
 
 
@@ -61,7 +67,17 @@ function startTimer (nSec){
                     clearInterval(conteggio)
                     secondi.classList.add("none");
                     visualizza.classList.add("none");
-                    
+                    inputUser.classList.remove("none");
+                    inviaNum.classList.remove("none");
+
+                    // gestisco click per inviare dati
+                    inviaNum.addEventListener("click",
+                        function(){
+                            
+                        }
+
+                    )
+
 
                 }
             }, 1000);
