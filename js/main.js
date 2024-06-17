@@ -1,16 +1,22 @@
+let secondi = document.getElementById("secondi");
+
 //gestisco il click per iniziare il gioco
 const start = document.getElementById("start");
 start.addEventListener("click",
     function(){
         start.classList.add("none")
-        let numeri = sequenzaNumeriRandom(1, 100, 5);
+        secondi.classList.remove("none");
+        let numeri = sequenzaNumeriRandom(1, 100, 10);
         console.log(numeri);
+        // Visualizzare in pagina 5 numeri casuali.
+        let visualizza = document.getElementById("visualizza");
+        visualizza.innerText ="questi sono i numeri : "+ numeri ;
+
     }
 
 )
 
 
-// Visualizzare in pagina 5 numeri casuali.
 
 
 // Da lì parte un timer di 30 secondi.
