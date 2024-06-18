@@ -15,6 +15,7 @@ let numeri;
 const start = document.getElementById("start");
 start.addEventListener("click",
     function(){
+        startTimer(5);
         start.classList.add("none")
         secondi.classList.remove("none");
         numeri = sequenzaNumeriRandom(1, 100, 5);
@@ -23,7 +24,7 @@ start.addEventListener("click",
          //   Visualizzare in pagina 5 numeri casuali. 
         visualizza.innerText ="questi sono i numeri : "+ numeri ;  
     }
-  ,startTimer(5),
+  
 );
 
 ///////////FUNZIONI//////////
@@ -68,6 +69,11 @@ function startTimer (nSec){
                     // gestisco click per inviare dati
                     inviaNum.addEventListener("click",
                         function(){//al click inserisco i dati nell'array 
+
+                             //inserisco il valore nell'array
+                             let valoreInput = parseInt(inputUser.value);
+                             arrayInput.push(valoreInput);
+                            valoreInput= "";
                             
                            //setto il placeholder in base al n di click
                             contoClick++;
@@ -85,9 +91,7 @@ function startTimer (nSec){
 
                             }
 
-                            //inserisco il valore nell'array
-                            let valoreInput = parseInt(inputUser.value);
-                            arrayInput.push(valoreInput);
+                           
                             
                                                     
                             
@@ -114,6 +118,7 @@ function startTimer (nSec){
                                      
 
                             } 
+
 
                             
 
